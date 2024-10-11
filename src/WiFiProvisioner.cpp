@@ -1,5 +1,7 @@
 // WiFiProvisioner.cpp
 #include "WiFiProvisioner.h"
+#include <AsyncTCP.h>
+#include <ESPAsyncWebServer.h>
 #include "internal/provision_html.h"
 #include <ArduinoJson.h>
 #include <WiFi.h>
@@ -102,7 +104,7 @@ void WiFiProvisioner::setupAccessPointAndServer() {
   stopServerLoop(false);
 
   // Initialize the server object
-  m_server = new WebServer(80);
+  m_server = new AsyncWebServer(80); //Normally set to WebServer. AsyncWebServer to run wiith AsyncMode
   m_dns_server = new DNSServer();
 
   // Set up the WiFi mode
