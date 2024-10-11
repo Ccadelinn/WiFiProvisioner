@@ -85,7 +85,7 @@ bool WiFiProvisioner::connectToExistingWiFINetwork() {
         delay(wifiDelay);
         debugPrintln(
             "Connection timeout reached, continuing to start the provision");
-        return false;
+        return true; //Normally set to false. Used to skip provisioning, if wifi not available
       }
     }
     return true;
